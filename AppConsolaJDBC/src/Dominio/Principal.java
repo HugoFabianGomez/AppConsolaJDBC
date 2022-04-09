@@ -10,7 +10,7 @@ public class Principal {
 		UsuarioDao usuarioDao = new UsuarioDao();
 	
 		Usuario usuario1 = new Usuario();
-		usuario1.setNombre("Santy Hugo -");
+		usuario1.setNombre("Santy Hugo");
 		usuario1.setApellido("Gomez");
 		usuarioDao.EjecutarSPA_CrearUsuario(usuario1);
 		

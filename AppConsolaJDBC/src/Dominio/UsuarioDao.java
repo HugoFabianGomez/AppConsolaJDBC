@@ -16,15 +16,13 @@ public class UsuarioDao {
 	private String dbName = "bdregistro";
 	
 	public UsuarioDao()
-	{
-		
-	}
+	{ }
 	
 	public int agregarUsuario (Usuario usuario)
 	{
-		String query = " Insert into Usuario(nombre, apellido ) values ('"+usuario.getNombre()+"', '"
+		String query = " Insert into Usuario(nombre, apellido ) "
+				+ "values ('"+usuario.getNombre()+"', '"
 						+usuario.getApellido()+"' )";
-		
 		Connection cn = null;
 		int filas = 0;
 		
@@ -112,28 +110,24 @@ public class UsuarioDao {
 				 x.setApellido(rs.getString(3));
 				 
 				 ListaUsuarios.add(x);
-			 }
-			 
+			 } 
 		 }
 		 catch(Exception e)
 		 {
 			 e.printStackTrace();
 		 }
-		 
 		 return ListaUsuarios;
-		
 	}
 	
 	public void EjecutarSPA_CrearUsuario(Usuario usuario)
 	{
-		Connection cn = null;
-		
+		Connection cn = null;	
 		try
 		{
 			cn = DriverManager.getConnection(host+dbName, user, pass);
 			CallableStatement cst = (CallableStatement) cn.prepareCall("CALL crearUsuario(?,?)");
 			cst.setString(1, usuario.getNombre());
-			cst.setString(2,  usuario.getApellido());
+			cst.setString(2, usuario.getApellido());
 			cst.execute();
 		}
 		catch(Exception e)
@@ -141,8 +135,5 @@ public class UsuarioDao {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
 	
 }
